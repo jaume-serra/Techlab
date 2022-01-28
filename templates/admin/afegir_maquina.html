@@ -1,0 +1,129 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Afegir/Eliminar màquina</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/admin/inici">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Afegir/Eliminar màquina</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#reserva_title" id="reserva_title">Afegir màquina</a></h3>
+                    </div>
+                  </div>
+                      <form id="afegirform" action="" method="POST" name="afegirform" role="form" class="contactForm">
+                        <div class="row">
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-desktop"></i> &nbsp;Nom màquina</span><br>
+                              <input type="text" id="nombre" name ="nombre" required="required" autocomplete="off">
+                              <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group log-status span8 margintop10 field">
+                              <span class="form-hist"><i class="fas fa-desktop"></i> &nbsp;ID màquina</span>
+                              <br><input type="number" id="id_Maquina" name="idMaquina" required="required" autocomplete="off">
+                          </div>
+
+                          <div class="form-group log-status span8 margintop10 field">
+                            <span class="form-hist"><i class="fas fa-desktop"></i>&nbsp;Descripció de la màquina</span>
+                            <br><textarea name="descripcio" rows="5" cols="70"></textarea>
+                          </div>
+
+                          <div class="form-group log-status span8 margintop10 field">
+                            <span class="form-hist"></span><i class="fas fa-desktop"></i> &nbsp;Factor de calibració</span>
+                            <br><input type="text" id="factorCalibracio" placeholder="*1 per defecte" name="factorCalibracio">
+                          </div>
+                        </div>
+                          <button class="btn btn-color" type="submit" name="afegirform" value="afegirform">Afegir</button>
+                          <br>
+                          <br>
+                    {% if msg == "Valid_form" %}
+                    <div class="alert success">
+                    <span class="closebtn">&times;</span>
+                       <strong>Success!</strong> Màquina creada amb èxit.
+                    </div>
+                    {% elif msg == "Maquinaexistent" %}
+                    <div id="errormessage">Màquina existent</div>
+                    <div class="alert">
+                    <span class="closebtn">&times;</span>
+                      <strong>Error!</strong> Màquina existent.
+                    </div>
+                    {% elif msg == "IDexistent" %}
+                    <div id="errormessage">ID existent</div>
+                    <div class="alert">
+                    <span class="closebtn">&times;</span>
+                      <strong>Error!</strong> ID existent.
+                    </div>
+                    {% elif msg == "Factorerroni" %}
+                    <div id="errormessage">Factor erroni</div>
+                    <div class="alert">
+                    <span class="closebtn">&times;</span>
+                      <strong>Error!</strong> Factor erroni.
+                    </div>
+                    {% endif %}
+                      </div>
+            </article>
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#reserva_title" id="reserva_title">Eliminar màquina</a></h3>
+                    </form>
+                    </div>
+                      <form id="eliminar_form" action="" method="POST" name="eliminar_from" role="form" class="contactForm">
+                        <div class="row">
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-desktop"></i> &nbsp;Nom màquina</span>
+                              <input type="text" id="nom" name ="nom" required="required" autocomplete="off">
+                            </div>
+                            <button class="btn btn-color marginleft10" type="submit" name="eliminar" value="eliminar">Eliminar</button>
+                          </div>
+                </form>
+
+                {% if msg == "MàquinaEliminada" %}
+                <div class="alert success">
+                <span class="closebtn">&times;</span>
+                   <strong>Success!</strong> Màquina eliminada amb èxit.
+                </div>
+                {% elif msg== "MaquinaNOExisteix" %}
+                <div id="errormessage">La màquina no existeix</div>
+                <div class="alert">
+                <span class="closebtn">&times;</span>
+                  <strong>Error!</strong>Màquina no existent
+                </div>
+                {% endif %}
+                </div>
+                    </div>
+          </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    setInterval("consultaAforament()", 5000)
+  </script>
+  {% endblock %}

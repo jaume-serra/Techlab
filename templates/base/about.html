@@ -1,0 +1,101 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Qui som?</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="base/index">Inici</a> <i class="icon-angle-right"></i></li>
+              <li>Qui som?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="span6">
+            <h4>Sobre nosaltres</h4>
+            <p class ="description-project">
+              Som un grup d'estudiants de quart d'Enginyeria de Sistemes TIC
+              i aquest és el nostre projecte de l'assignatura d'Integració de Sistemes.
+              En aquest projecte apliquem els nostres coneixements sobre les TIC per
+              controlar un laboratori de l'escola a causa de la COVID-19.
+            </p>
+            <p class ="description-project">
+              El projecte és una continuació de l'assignatura d'Enginyeria de Sistemes.
+              En aquest projecte tractem de monitoritzar a temps real un laboratori i tenim accés a les
+              màquines remotament gràcies a una placa de circuit imprés que vam dissenyar en l'anterior assignatura.
+              En aquest projecte apart de la monitorització i el control de persones al laboratori, tractem la interconnexió
+              de xarxes desde un dispositiu encastat fins a un servidor amb la seva base de dades.
+            </p>
+          </div>
+          <div class="span6">
+            <div class="video-about">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/v9hMOk4wfdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        <div class="row">
+          <div class="span12">
+            <div class="solidline"></div>
+          </div>
+        </div>
+        <div class="row team">
+          <div class="span12">
+            <h4>El nostre equip de treball</h4>
+          </div>
+          <div class="span3">
+            <div class="team-box">
+              <a href="#" class="thumbnail"><img src="static/img/dummies/ivan.jpg" alt="" /></a>
+              <div class="roles aligncenter">
+                <p class="lead"><strong>Ivan Chamero</strong></p>
+                <p>
+                  Full-stack - Hardware
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="team-box">
+              <a href="#" class="thumbnail"><img src="static/img/dummies/jaume.jpg" alt="" /></a>
+              <div class="roles aligncenter">
+                <p class="lead"><strong>Jaume Serra</strong></p>
+                <p>
+                  Base de dades - Back-end
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="team-box">
+              <a href="#" class="thumbnail"><img src="static/img/dummies/prieto.jpg" alt="" /></a>
+              <div class="roles aligncenter">
+                <p class="lead"><strong>Alejandro Prieto</strong></p>
+                <p>
+                  Front-end - Hardware
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="team-box">
+              <a href="#" class="thumbnail"><img src="static/img/dummies/manu.jpg" alt="" /></a>
+              <div class="roles aligncenter">
+                <p class="lead"><strong>Manuel A. Román</strong></p>
+                <p>
+                  Full stack - Hardware
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends 'client/base_client.html' %}
+{% block content %}
+<section id="inner-headline">
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <div class="inner-heading">
+          <h2>TechLab Usuaris</h2>
+        </div>
+      </div>
+      <div class="span8">
+        <ul class="breadcrumb">
+          <li><a href="/client/inici">Inici </a> <i class="icon-angle-right"></i></li>
+          <li class="active">Reservar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="content">
+        <div class="container">
+          <div class="row">
+            <div class="span4">
+              <aside class="left-sidebar">
+                <div class="widget">
+                  <h5 class="widgetheading">Aforament</h5><br>
+                  <canvas id ="aforament-nou" width="150" height="150"></canvas>
+
+                </div>
+              </aside>
+            </div>
+
+            <div class="span8">
+                <article>
+                    <div class="row">
+                      <div class="span8">
+                        <div class="post-image">
+                          <div class="post-heading">
+                            <h3><a href="#reserva_title" id="reserva_title">Reserva d'una màquina</a></h3>
+                          </div>
+                        </div>
+                        <form id="histMaquinesform1" action="#" method="POST" role="form" class="contactForm">
+                          <div class="row">
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="far fa-calendar-alt"></i>&nbsp;Dia</span><br>
+                              <input type="date" id="data-reserva" name="data">
+                              <div class="validation"></div>
+                            </div>
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-clock"></i>&nbsp;Hora inici</span><br>
+                              <input type="time" id="hora-inici" name = "hora_inici" min="08:00" max="20:00">
+                              <div class="validation"></div>
+                            </div>
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-clock"></i>&nbsp;Hora finalització</span><br>
+                              <input type="time" id="hora-final" name = "hora_final" min="08:00" max="20:00">
+                              <div class="validation"></div>
+                            </div>
+                            <div class="form-group log-status span8 margintop10 field">
+                              <span class="form-hist"><i class="fas fa-desktop"></i>&nbsp;Màquina a reservar:</span><br>
+                              <br><input type="text" list="maquines" name="maquina" autocomplete="off">
+                              <datalist id="maquines">
+                                {% for maquina in maquines %}
+                                  <option value={{maquina[0]}}></option>
+                                {% endfor %}
+                              </datalist>
+                            </div>
+                              <p>
+                                <button class="btn btn-color marginleft10" type="submit">Reservar</button>
+                              </p>
+                            </div>
+
+                            {% if error=="MaquinaAveriada" %}
+                            <div id="errormessage">Maquina no disponible</div>
+                            <div class="alert">
+                            <span class="closebtn">&times;</span>
+                              <strong>Error!</strong> Maquina averiada temporalment.
+                            </div>
+                            {% endif %}
+
+                            {% if msg == "Valid_form" %}
+                            <div class="alert success">
+                            <span class="closebtn">&times;</span>
+                               <strong>Success!</strong> Reserva realitzada.
+                            </div>
+
+                            <div id="sendmessage">Reserva realitzada</div>
+                            {% elif error == "Invalid_data" %}
+                            <div class="alert">
+                            <span class="closebtn">&times;</span>
+                            <strong>Error!</strong> Data no valida.
+                            </div>
+                              <div id="errormessage">Data no valida</div>
+                            {% elif error == "Invalid_email" %}
+                              <div id="errormessage">Email no valid</div>
+                              <div class="alert">
+                              <span class="closebtn">&times;</span>
+                                <strong>Error!</strong> Email no valid.
+                              </div>
+                              {% elif error == "MachineNoExist" %}
+                                <div id="errormessage">La màquina no existeix</div>
+                                <div class="alert">
+                                <span class="closebtn">&times;</span>
+                                  <strong>Error!</strong> La màquina no existeix.
+                                </div>
+                            {% elif error == "Invalid_permision" %}
+                                <div id="errormessage">Sense permisos a la maquina</div>
+                                <div class="alert">
+                                <span class="closebtn">&times;</span>
+                                  <strong>Error!</strong> Sense permisos a la maquina.
+                                </div>
+                            {% elif error == "Invalid_reserved_already" %}
+                              <div id="errormessage">Aquesta màquina ja està reservada</div>
+                              <div class="alert">
+                              <span class="closebtn">&times;</span>
+                                <strong>Error!</strong> Aquesta màquina ja està reservada.
+                              </div>
+
+
+                              {% elif error == "TempsMinim" %}
+                              <div id="sendmessage">Temps mínim</div>
+                              <div class="alert">
+                              <span class="closebtn">&times;</span>
+                              <strong>Error!</strong> Temps mínim de reserva 1 hora i maxim 2 hores.
+                              </div>
+                                <div id="errormessage">Temps mínim de reserva 1 hora i maxim 2 hores.</div>
+
+
+                          {% elif error == "ReservaON" %}
+                          <div id="sendmessage">Ja té una reserva</div>
+                            <div class="alert">
+                            <span class="closebtn">&times;</span>
+                            <strong>Error!</strong> Només una reserva per dia.
+                            </div>
+                              <div id="errormessage">Només una reserva per dia.</div>
+
+                            {% elif error == "Invalid_form" %}
+                              <div id="errormessage">Formulari no valid</div>
+                              <div class="alert">
+                              <span class="closebtn">&times;</span>
+                                <strong>Error!</strong> Formulari no valid.
+                              </div>
+                            {% endif %}
+                          </div>
+                        </form>
+                  </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      setInterval("consultaAforament()", 5000)
+    </script>
+{% endblock %}

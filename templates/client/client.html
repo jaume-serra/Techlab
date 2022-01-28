@@ -1,0 +1,97 @@
+{% extends 'client/base_client.html' %}
+{% block content %}
+
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>TechLab Usuaris</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/client/inici">Inici </a> <i class="icon-angle-right"></i></li>
+              <li class="active">Client</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+            <div class="container">
+              <div class="row">
+                <div class="span4">
+                  <aside class="left-sidebar">
+                    <div class="widget">
+                      <h5 class="widgetheading">Aforament</h5><br>
+                      <canvas id ="aforament-nou" width="150" height="150"></canvas>
+                    </div>
+                  </aside>
+                </div>
+
+                <div class="span8">
+                  <article>
+                    <div class="row">
+                      <div class="span8">
+                        <div class="post-image">
+                          <div class="post-heading">
+                            <h3><a href="#reserves" id="reserves">Les meves reserves</a></h3>
+                          </div>
+                        </div>
+                        {% if items == [] %}
+                        <div class="post-heading">
+                          <p>Cap reserva durant aquesta setmana</p>
+                        </div>
+                        {% else %}
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Dia</th>
+                                <th>Hora inici</th>
+                                <th>Hora final</th>
+                                <th>Màquina</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for reserva in items %}
+                              <tr>
+                                <td>{{reserva[0]}}</td>
+                                <td>{{reserva[1]}}</td>
+                                <td>{{reserva[2]}}</td>
+                                <td>{{reserva[4]}}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+                  </article>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <script>
+          setInterval("consultaAforament()", 5000)
+        </script>
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/jquery.easing.1.3.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+        <script src="/static/js/modernizr.custom.js"></script>
+        <script src="/static/js/toucheffects.js"></script>
+        <script src="/static/js/google-code-prettify/prettify.js"></script>
+        <script src="/static/js/jquery.prettyPhoto.js"></script>
+        <script src="/static/js/portfolio/jquery.quicksand.js"></script>
+        <script src="/static/js/portfolio/setting.js"></script>
+        <script src="/static/js/animate.js"></script>
+        <script src="/static/js/custom.js"></script>
+        <script src="/static/js/chart.js"></script>
+        <script src="/static/js/chartjs-plugin-streaming.min.js"></script>
+        <script src="/static/js/jquery.knob.js"></script>
+        <script src="/static/js/jquery.knob.min.js"></script>
+        <script src="/static/js/grafic-circular.js"></script>
+
+  {% endblock %}

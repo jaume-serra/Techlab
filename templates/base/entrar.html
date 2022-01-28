@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Entrar </h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="base/index">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Entrar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="span7">
+            <img class="imatgeEntrar" src="/static/img/upc-escola.jpeg" width="95%" height="36%">
+          </div>
+          <div class="span5">
+            <div class="clearfix"></div>
+            <aside class="right-sidebar">
+              <form class="" name="entrarForm" action="" method="POST">
+                <div class="login-form">
+                   <h1 class="title_entrar">TechLab EPSEM</h1>
+                    <div class="form-group log-status">
+                      <i class="fa fa-user"></i>
+                      <input type="text" class="form-control" placeholder="Nom d'usuari " id="UserName" name="email">
+                    </div>
+                    <div class="form-group log-status">
+                      <i class="fa fa-lock"></i>
+                      <input type="password" class="form-control" placeholder="Contrasenya" id="Password" name="password">
+                    </div>
+                  {% if error == "INVALID_FORM" %}
+                  <span class="alert">Credencials incorrectes</span>
+                  {% endif %}
+                  <br>
+                  <br>
+                 <button type="submit" class="log-btn entrar-btn"><i class="fas fa-sign-in-alt"></i>&nbsp;Entrar</button>
+              </form>
+              <div class="pswd">
+                <br>
+                <a href="#myPopup"><i class="far fa-dot-circle"></i> Has oblidat la contrasenya?</a>
+                <div id="myPopup" class="overlay">
+                  <div class="popupEntrar">
+                    <p>Introdueix el teu correu per<br>poder recuperar la contrasenya</p>
+                    {% if msg=="CorreuEnviat" %}
+                    <div class="alert success">
+                      <span class="closebtn">&times;</span>
+                         <strong>Success!</strong> S'ha enviat un correu amb la vostre contrasenya.
+                    </div>
+                    {% endif %}
+                    {% if msg == "NoCorreuEnviat" %}
+                    <div class="alert">
+                      <span class="closebtn">&times;</span>
+                      <strong>Error!</strong> L'usuari no existeix
+                    </div>
+                    {% endif %}
+                    <form class="" name="perduda" action="" method="POST">
+                      <input type="text" placeholder="Correu d'usuari" id="usuari" name="usuari" required=required>
+                      <br>
+                      <button type="submit" class="btn btn-color"><i class="fas fa-redo"></i>&nbsp;Enviar correu</a>
+                      <a class="close" href="#">&times;</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,124 @@
+<script type="text/javascript">
+  function redirect(numero) {
+         //console.log("maquina"+numero); //prova
+         window.location.href = "/admin/maquina/"+numero;
+     }
+  </script>
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#estat-tr" id="estat-tr">Estat de les màquines en temps real</a></h3>
+                    </div>
+                  <div class="post-entry">
+                    <ul>
+                      <div class="primera-fila-ad">
+                      {% for maquina in maquines[0:5] %}
+                      <li class="mapa-li">
+                        {% if maquina[2] == 4 %}
+                        <i id="{{maquina[0]}}" class="fas fa-desktop icono apagat" onclick="redirect('{{maquina[0]}}')">
+                        {% elif maquina[2] == 3 %}
+                        <i id="{{maquina[0]}}" class="fas fa-desktop icono ences" onclick="redirect('{{maquina[0]}}')">
+                        {% elif maquina[2] == 2 %}
+                        <i id="{{maquina[0]}}" class="fas fa-desktop icono averia" onclick="redirect('{{maquina[0]}}')">
+                        {% endif %}
+                        <div class="numero">{{maquina[0]}}</div>
+                        </i>
+                      </li>
+
+                        {% endfor %}
+                      </div>
+                      <div class="segona-fila">
+                      {% for maquina in maquines[5:] %}
+                      <li class="mapa-li">
+                      {% if maquina[2] == 4 %}
+                      <i id="{{maquina[0]}}" class="fas fa-desktop icono apagat" onclick="redirect('{{maquina[0]}}')">
+                      {% elif maquina[2] == 3 %}
+                      <i id="{{maquina[0]}}" class="fas fa-desktop icono ences" onclick="redirect('{{maquina[0]}}')">
+                      {% elif maquina[2] == 2 %}
+                      <i id="{{maquina[0]}}" class="fas fa-desktop icono averia" onclick="redirect('{{maquina[0]}}')">
+                      {% endif %}
+                      <div class="numero">{{maquina[0]}}</div>
+                      </i>
+                      </li>
+                      {% endfor %}
+                      </div>
+                    </ul>
+                      <br><br>
+                    <a href="#reserves_avui" class="btn btn-color reserves_btn">Reserves d'avui<i class="icon-angle-right"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#consum-maquines" id="consum-maquines">Potència de les màquines en temps real</a></h3>
+                    </div>
+                  </div>
+                  <canvas id="potencies-maquines" width="10px" height="10px"></canvas>
+                </div>
+              </div>
+            </article>
+
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#reserves_avui" id="reserves_avui">Reserves d'avui</a></h3>
+                    </div>
+                  </div>
+                  {% if items == [] %}
+                  <p>No hi ha cap reserva disponible.</p>
+                  {% else %}
+                  <table class="table table-striped" >
+                      <thead>
+                        <tr>
+                          <th>Hora inici</th>
+                          <th>Hora final</th>
+                          <th>Usuari</th>
+                          <th>Màquina</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+
+                        {% for item in items %}
+                        <tr>
+                          <td>{{item[1]}}</td>
+                          <td>{{item[2]}}</td>
+                          <td>{{item[3]}}</td>
+                          <td>{{item[4]}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  {% endif %}
+                    <a href="reservar" class="btn btn-color">Reservar<i class="icon-angle-right"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/static/js/potencies.js"></script>
+    <script>
+      setInterval("updatePotencies()",1000);
+      setInterval("consultaEstatMaquines()", 1000);
+    </script>
+
+{% endblock content %}

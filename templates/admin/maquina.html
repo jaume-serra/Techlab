@@ -1,0 +1,129 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>{{maquina[1]}}</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/admin/inici">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Màquines <i class="icon-angle-right"></i></li>
+              <li class="active">{{maquina[1]}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <aside class="left-sidebar">
+              <div class="widget">
+                <h5 class="widgetheading"><br>Informació màquina<span></span></h5>
+                <ul class="contact-info">
+                  <li><label>ID Màquina :</label><i class="fas fa-desktop"></i> {{maquina[0]}}</li>
+                  <li><label>Nom Màquina :</label><i class="fas fa-desktop"></i> {{maquina[1]}}</li>
+
+                  <li><label>Estat:</label><i id="colorMaquina" class="fas fa-power-off btn-state-on estatMaquina"></i></li>
+                  <li>
+                    <label>Apagar/Encendre :</label>
+                    <i class="fas fa-toggle-on boto-encendre" id="boto-on" onclick="canviaBoto('{{maquina[1]}}')"></i>
+                    <i class="fas fa-toggle-off boto-apagar" id ="boto-off" onclick="canviaBoto('{{maquina[1]}}')"></i>
+                  </li>
+                  <li><label>Usuari : </label> <i class="fas fa-user"></i><span id="usuari-reserva"></span> </li>
+                  <li><label>SSID Wifi : </label><i class="fas fa-wifi"></i><span id="ssid-wifi"></span></li>
+                  <li><label>Finalitza reserva : </label><i class="fas fa-sign-out-alt finalitza-reserva" onclick="finalitzaReserva('{{maquina[1]}}')"></i></li>
+                  <li><label><b>Emergència : </b></label><i id="botoEmergencia" class="fas fa-exclamation-triangle emergencia"></i></li> <!-- display none -->
+                  <li><label>Configuració wifi : </label>
+                    <a href="#myPopup" class="btn btn-color"><i class="fas fa-cogs"></i> Configuració</a></li>            
+                      <div id="myPopup" class="overlay">
+                        <div class="popup">
+                          <input type="text" placeholder="SSID Nou" id="nouSsidWifi" name="nouSsidWifi" required>
+                          <br>
+                          <input type="text" placeholder="Contrasenya nova" id="nouPswdWifi" name="nouPswdWifi" required>
+                          <br>
+                          <a href="#" class="btn btn-color" onclick="changeWifiParam('{{maquina[1]}}')"><i class="fas fa-cogs"></i> Configurar</a>
+                          <a class="close" href="#">&times;</a>                         
+                        </div>
+                      </div>
+                  <li><label><b>Historial : </b></label><a href="/admin/histMaquines" class="btn btn-color"><i class="fas fa-history"></i> Consulta historial</a></li>
+                  <li><label><b>Canviar estat màquina : </b></label>
+                    <a href="#myPopup2" class="btn btn-color"><i class="fas fa-exchange-alt"></i> Canviar estat</a></li> 
+                      <div id="myPopup2" class="overlay">
+                        <div class="popup2">
+                          <a href="#" class="btn btn-warning botoestat" onclick="canviaValorActuador('Emergencia','{{maquina[1]}}')"><br><i class="fas fa-exclamation-triangle iconestat"></i><br>AVERIADA</a>
+                          <a href="#" class="btn btn-color botoestat" onclick="canviaValorActuador('off','{{maquina[1]}}')"><br><i class="far fa-check-square iconestat"></i><br>ARREGLAT</a>
+                          <a class="close" href="#">&times;</a>                         
+                        </div>
+                      </div> 
+                </ul>
+              </div>
+              <div class="widget">
+                <h5 class="widgetheading">Categories</h5>
+                <ul class="cat">
+                  <li><i class="icon-angle-right"></i> <a href="/admin/maquines">Control màquines</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/histUsers">Historial usuaris</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/histMaquines">Historial màquines</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/reservar">Introduïr reserva</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/cancelar">Cancel·lar reserva</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/inici#reserves_avui">Reserves d'avui</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/histUsers">Reserves d'un usuari</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/afegir_usuari">Afegir/Eliminar usuari</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/afegir_permisos">Modificar permisos</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="/admin/afegir_maquina">Afegir/Eliminar màquina</a></li>
+                </ul>
+              </div>
+              <div class="widget">
+                <h5 class="widgetheading">Aforament</h5><br>
+                <canvas id ="aforament-nou" width="150" height="150"></canvas>
+              </div>
+            </aside>
+          </div>
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#consum" id="consum"></a>Potència</h3>
+                    </div>
+                  </div>
+                  <canvas id="consum-maquina1" width="10px" height="10px"></canvas>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <script>
+        setInterval("checkReserva('{{maquina[1]}}')", 1000)
+        setInterval("consultaValor('{{maquina[1]}}')", 1000)
+        setInterval("actualitzaEstat('{{maquina[1]}}')", 1000)
+        setInterval("checkWifi('{{maquina[1]}}')",5000)
+      </script>
+    </section>
+
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/modernizr.custom.js"></script>
+    <script src="/static/js/toucheffects.js"></script>
+    <script src="/static/js/google-code-prettify/prettify.js"></script>
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/js/portfolio/jquery.quicksand.js"></script>
+    <script src="/static/js/portfolio/setting.js"></script>
+    <script src="/static/js/animate.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/chart.js"></script>
+    <script src="/static/js/chartjs-plugin-streaming.min.js"></script>
+    <script src="/static/js/jquery.knob.js"></script>
+    <script src="/static/js/jquery.knob.min.js"></script>
+    <script src="/static/js/grafic-circular.js"></script>
+    <script src="/static/js/funcions.js"></script>
+{% endblock %}

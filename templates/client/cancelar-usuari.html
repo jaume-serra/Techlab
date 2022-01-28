@@ -1,0 +1,87 @@
+{% extends 'client/base_client.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Cancel·lar reserva</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/client/inici">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Cancel·lar reserva</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+            <div class="container">
+              <div class="row">
+                <div class="span8">
+                  <article>
+                    <div class="row">
+                      <div class="span8">
+                        <div class="post-image">
+                          <div class="post-heading">
+                            <h3><a href="#">Cancel·lar reserva d'una màquina</a></h3>
+                          </div>
+                        </div>
+                        <form id="cancelarrform" action="" method="post" role="form" class="contactForm">
+                          <!--div id="sendmessage">Consulta realitzada</div-->
+                          <!--div id="errormessage">Consulta error</div-->
+                          <div class="row">
+                            <div class="form-group log-status span8 margintop10 field">
+                              <span class="form-hist"><i class="fas fa-user"></i> &nbsp;Nom d'usuari</span>
+                              <br><input type="text" placeholder="* Introdueix el nom d'usuari" id="UserName">
+                            </div>
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-key"></i>&nbsp;Contrasenya</span><br>
+                              <input type="password" id="psw" placeholder="* Introdueix la contrasenya">
+                              <div class="validation"></div>
+                            </div>
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-desktop"></i>&nbsp;Màquina a cancel·lar</span><br>
+                              <input type="text">
+                              <select>
+                                <option value="Màquina 1">Màquina 1</option>
+                                <option value="Màquina 2">Màquina 2</option>
+                                <option value="Màquina 3">Màquina 3</option>
+                                <option value="Màquina 4">Màquina 4</option>
+                                <option value="Màquina 5">Màquina 5</option>
+                                <option value="Màquina 6">Màquina 6</option>
+                                <option value="Màquina 7">Màquina 7</option>
+                                <option value="Màquina 8">Màquina 8</option>
+                                <option value="Màquina 9">Màquina 9</option>
+                                <option value="Màquina 10">Màquina 10</option>
+                              </select>
+                          </div>
+
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="far fa-calendar-alt"></i>&nbsp;Dia</span><br>
+                              <input type="date" id="data-inici">
+                              <div class="validation"></div>
+                            </div>
+                            <div class="span8 margintop10 field form-group">
+                              <span class="form-hist"><i class="fas fa-clock"></i>&nbsp;Hora</span><br>
+                              <input type="time" id="data-final">
+                              <div class="validation"></div>
+                            </div>
+                              <p>
+                                <button class="btn btn-color marginleft10" type="submit">Cancel·lar</button>
+                              </p>
+                            </div>
+                          </div>
+                        </form>
+
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Contacta </h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="base/index">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Contacta</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.2471413295316!2d1.8272936395965917!3d41.73676188834538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4580630229067%3A0x267710eb82e6d8d7!2sEscuela%20Polit%C3%A9cnica%20Superior%20de%20Ingenier%C3%ADa%20de%20Manresa!5e0!3m2!1ses!2ses!4v1631722655592!5m2!1ses!2ses" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <div class="container">
+        <div class="row">
+          <div class="span8">
+            <h4><br>Poseu-vos en contacte amb nosaltres emplenant el formulari de contacte següent</h4>
+            <form id="contactform" action="" method="post" role="form" class="contactForm">
+              <div id="sendmessage">El teu missatge ha sigut enviat. Gràcies!</div>
+              <div id="errormessage"></div>
+              <div class="row">
+                <div class="span4 field form-group">
+                  <input type="text" name="name" placeholder="* Introdueix el nom complet" data-rule="minlen:4" data-msg="4 caràcters mínim." required="required"/>
+                  <div class="validation"></div>
+                </div>
+                <div class="span4 field form-group">
+                  <input type="text" name="email" placeholder="* Introdueix el teu email" data-rule="email" data-msg="Introudeixi un email vàlid." required="required"/>
+                  <div class="validation"></div>
+                </div>
+                <div class="span8 margintop10 field form-group">
+                  <input type="text" name="subject" placeholder="* Introdueix el tema de contacte" data-rule="minlen:4" data-msg="4 caràcters mínim." required="required"/>
+                  <div class="validation"></div>
+                </div>
+                <div class="span8 margintop10 field form-group">
+                  <textarea rows="12" name="message" class="input-block-level" placeholder="* El teu missatge aquí..." data-rule="required" data-msg="Siusplau escriu un missatge." required="required"></textarea>
+                  <div class="validation"></div>
+
+                  <p>
+                    <button class="btn btn-color margintop10 pull-left" type="submit">Envia</button>
+                    <span class="pull-right margintop20">* Siusplau, ompli totes les entrades del formulari. Gràcies</span>
+                  </p>
+                </div>
+              </div>
+            </form>
+            {% if msg == "Valid_form" %}
+                            <div class="alert success">
+                            <span class="closebtn">&times;</span>
+                               <strong>Success!</strong> El teu missatge s'ha enviat correctament.
+                            </div>
+            {% endif %}
+          </div>
+          <div class="span4">
+            <div class="clearfix"></div>
+            <aside class="right-sidebar">
+              <div class="widget">
+                <h5 class="widgetheading"><br>Informació de contacte<span></span></h5>
+                <ul class="contact-info">
+                  <li><label>Direcció :</label><i class="fas fa-map-marker-alt"></i> Av. de les Bases de Manresa, 61-73, Manresa<br/></li>
+                  <li><label>Teléfon :</label> <i class="icon-phone"></i> (+34) 93 877 72 00</li>
+                  <li><label>Email : </label> <i class="icon-envelope-alt"></i> techlabepsem21@gmail.com</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

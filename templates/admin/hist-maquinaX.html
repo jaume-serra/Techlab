@@ -1,0 +1,99 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Historial Màquina X</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="admin">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active"><a href="/admin/histMaquines">Historial màquines ></a></li>
+              <li class="active">Historial màquina X</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#moviments" id="moviments">Moviments del dia X al dia Y</a></h3>
+                    </div>
+                  </div>
+                  <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Dia</th>
+                          <th>Hora inici</th>
+                          <th>Hora final</th>
+                          <th>Pótencia mitjana</th>
+                          <th>Usuari</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>X-Y-Z</td>
+                          <td>08:00</td>
+                          <td>10:00</td>
+                          <td>13mA</td>
+                          <td>MA. Román</td>
+                        </tr>
+                        <tr>
+                          <td>X-Y-Z</td>
+                          <td>08:00</td>
+                          <td>10:00</td>
+                          <td>15mA</td>
+                          <td>Jaume Serra</td>
+                        </tr>
+                        <tr>
+                          <td>X-Y-Z</td>
+                          <td>09:00</td>
+                          <td>11:00</td>
+                          <td>20mA</td>
+                          <td>Alejandro Prieto</td>
+                        </tr>
+                        <tr>
+                          <td>X-Y-Z</td>
+                          <td>14:00</td>
+                          <td>15:00</td>
+                          <td>100mA</td>
+                          <td>Ivan Chamero</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </article>
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#consum-reserves" id="consum-reserves">Pótencia i Reserves del dia X al dia Y</a></h3>
+                    </div>
+                  </div>
+                  <canvas id="consumMachine" width="40px" height="40px"></canvas>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/static/js/grafic-circular.js"></script>
+    <script>
+      setInterval("consultaAforament()", 5000)
+    </script>
+{% endblock %}

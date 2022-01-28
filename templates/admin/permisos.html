@@ -1,0 +1,107 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+ <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Modificar permisos</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/admin/inici">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Modificar permisos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+                <div class="span8">
+                <div class="post-image">
+                    <div class="post-heading">
+                    <h3><a href="#info-personal" id="info-personal">Afegir/Eliminar permisos</a></h3>
+                    </div>
+                </div>
+                <ul class="contact-info">
+                    <form id="afegir-perfil" action="" method="POST" role="form" class="contactForm">
+                        <div class="row">
+                          <div class="form-group log-status span8 margintop10 field">
+                            <p hidden>
+                              <input type="text" name="estatAnterior" id="estatAnterior" value ={{estatAnterior}}>
+                            </p>
+                            <span class="form-hist"><i class="fas fa-user"></i> &nbsp;Usuari </span>
+                            <br><input type="text" list="usuaris" name="usuaris" autocomplete="off" value="{{valor}}">
+                            <datalist id="usuaris">
+                              {% for usuari in usuaris %}
+                              <option value={{usuari[0]}}></option>
+                              {% endfor %}
+                            </datalist>
+                      </form>
+                      <p>
+                        <button class="btn btn-color marginleft10" type="submit" name="boto-permis" value="afegir">Afegir</button>
+                        <button class="btn btn-color marginleft10" type="submit" name="boto-permis" value="eliminar">Eliminar</button>
+                      </p>
+                      {% if taula %}
+                      {% if maquines[0][0] != "---" %}
+                      <table class="table table-striped" >
+                          <thead>
+                            <tr>
+                              <th>Màquina</th>
+                              <th>Permís</th>
+                              <th>Utilització</th>
+                            </tr>
+                          </thead>
+                          {% for maquina in maquines %}
+                          <tbody>
+                            <tr>
+                              <td>{{maquina[1]}}</td>
+                              <td> <input type="checkbox" name="{{maquina[0]}}_permis"> </td>
+                              <td> <input type="checkbox" name="{{maquina[0]}}_utilitzacio"> </td>
+                            </tr>
+                          </tbody>
+                          {% endfor %}
+                        </table>
+                        <p>
+                          <button class="btn btn-color marginleft10" type="submit" name="boto-permis" value="modificar">Modificar</button>
+                        </p>
+                    {% endif %}
+                    {% if maquines[0][0] == "---" %}
+                    <p>
+                      No hi ha cap permís a modificar aquí.
+                    </p>
+                    {% endif %}
+                    {% endif %}
+
+                       {% if msg=="NoExisteix" %}
+                       <div id="errormessage">Usuari no existeix</div>
+                       <div class="alert">
+                       <span class="closebtn">&times;</span>
+                         <strong>Error!</strong>Usuari no existent
+                       </div>
+                       {% endif %}
+                      {% if msg=="si" %}
+                      <div class="alert success">
+                      <span class="closebtn">&times;</span>
+                         <strong>Success!</strong> Permisos modificats.
+                      </div>
+                      {% endif %}
+                  </div>
+                  </div>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Usuari X</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/admin/inici">Inici </a> <i class="icon-angle-right"></i></li>
+              <li><a href="/admin/histUsers">Historial usuaris </a> <i class="icon-angle-right"></i></li>
+              <li class="active">Usuari X</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+          <div class="row">
+                <div class="span8">
+                  <article>
+                    <div class="row">
+                      <div class="span8">
+                        <div class="post-image">
+                            <article>
+                    <div class="row">
+                      <div class="span8">
+                        <div class="post-image">
+                          <div class="post-heading">
+                            <h3><a href="#info-personal" id="info-personal">Informació personal</a></h3>
+                          </div>
+                        </div>
+                        <ul class="contact-info">
+                          <li><i class="fas fa-user"></i>  Manuel Angel Román Ramos</li>
+                          <li><i class="fas fa-envelope"></i>&nbsp;manurroman9818@gmail.com</li>
+                          <li><i class="fas fa-key"></i> JajaNo</li>
+                          <li><i class="fas fa-user-tag"></i>&nbsp; Administrador</li>
+                          <li>
+                            <form id="canviar-perfil" action="" method="post" role="form" class="contactForm">
+                              <div class="row">
+                                <div class="span8 log-status  field form-group">
+                                  <span class="form-hist"><i class="fas fa-key"></i>&nbsp;Nova contrasenya </span><br>
+                                  <input type="password" id="new-password">
+                                  <div class="validation"></div>
+                                </div>
+                                <div class="span8 log-status  field form-group">
+                                  <span class="form-hist"><i class="fas fa-envelope"></i></i>&nbsp;Nou email </span><br>
+                                  <input type="text" id="new-email">
+                                  <div class="validation"></div>
+                                </div>
+                                <div class="span8 log-status  field form-group">
+                                  <span class="form-hist"><i class="fas fa-users-cog"></i>&nbsp;Nou rol</span><br>
+                                  <input type="text" list="rol">
+                                  <datalist id="rol">
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Usuari">Usuari</option>
+
+                                  </datalist>
+                              </div>
+                                  <p>
+                                    <button class="btn btn-color marginleft10" type="submit">Efectua canvis</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </form>
+                          </li>
+                        </ul>
+                    </div>
+                  </article>
+                          <div class="post-heading">
+                            <h3><a href="#ultimes-reserves" id="ultimes-reserves">Últimes reserves</a></h3>
+                          </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Dia</th>
+                                <th>Hora inici</th>
+                                <th>Hora final</th>
+                                <th>Pótencia mitjana</th>
+                                <th>Màquina</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>X-Y-Z</td>
+                                <td>08:00</td>
+                                <td>10:00</td>
+                                <td>13mA</td>
+                                <td>Màquina 1</td>
+                              </tr>
+                              <tr>
+                                <td>X-Y-Z</td>
+                                <td>08:00</td>
+                                <td>10:00</td>
+                                <td>15mA</td>
+                                <td>Màquina 2</td>
+                              </tr>
+                              <tr>
+                                <td>X-Y-Z</td>
+                                <td>09:00</td>
+                                <td>11:00</td>
+                                <td>20mA</td>
+                                <td>Màquina 10</td>
+                              </tr>
+                              <tr>
+                                <td>X-Y-Z</td>
+                                <td>14:00</td>
+                                <td>15:00</td>
+                                <td>100mA</td>
+                                <td>Màquina 3</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="row">
+                      <div class="span8">
+                        <div class="post-image">
+                          <div class="post-heading">
+                            <h3><a href="#consum-reserves" id="consum-reserves">Pótencia i reserves  del dia X al dia Y</a></h3>
+                          </div>
+                        </div>
+                        <canvas id="consumUsuari" width="40px" height="40px"></canvas>
+                      </div>
+                    </div>
+                  </article>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <script src="/static/js/grafic-circular.js"></script>
+        <script>
+          setInterval("consultaAforament()", 5000)
+        </script>
+{% endblock %}

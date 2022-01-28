@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <section id="intro">
+      <div class="intro-content">
+        <h2>Benvingut al TechLab!</h2>
+        <h3>Podeu reservar la màquina que desitgeu</h3>
+        <div>
+          <a href="#" class="btn-get-started scrollto" onclick="redirect()">Reserva</a>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <div class="row">
+              <div class="span3">
+                <div class="box aligncenter">
+                  <div class="icon">
+                    <span class="badge badge-info badge-circled">1</span>
+                    <i class="ico icon-dropbox icon-5x"></i>
+                  </div>
+                  <div class="text">
+                    <h4><strong>Aforament</strong></h4>
+                    <p>
+                      El sistema és capaç de controlar l'aforament del laboratori en temps real.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="span3">
+                <div class="box aligncenter">
+                  <div class="icon">
+                    <span class="badge badge-success badge-circled">2</span>
+                    <i class="ico icon-bitbucket icon-5x"></i>
+                  </div>
+                  <div class="text">
+                    <h4><strong>Control remot</strong></h4>
+                    <p>
+                      Permet actuar sobre les màquines remotament i conèixer el seu estat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="span3">
+                <div class="box aligncenter">
+                  <div class="icon">
+                    <span class="badge badge-warning badge-circled">3</span>
+                    <i class="ico icon-rocket icon-5x"></i>
+                  </div>
+                  <div class="text">
+                    <h4><strong>Consum</strong></h4>
+                    <p>
+                      El sistema coneix en temps real el consum de les màquines i els seus històrics en el temps.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="span3">
+                <div class="box aligncenter">
+                  <div class="icon">
+                    <span class="badge badge-important badge-circled">4</span>
+                    <i class="ico icon-cut icon-5x"></i>
+                  </div>
+                  <div class="text">
+                    <h4><strong>Logística</strong></h4>
+                    <p>
+                      El sistema és capaç de conèixer l'històric de les màquines,
+                      els usuaris que l'han utilitzat, el consum de cadascuna,etc.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12">
+            <div class="cta-box">
+              <div class="row">
+                <div class="span8">
+                  <div class="cta-text">
+                    <h2>Pots <span>cancel·lar</span> la teva reserva</h2>
+                  </div>
+                </div>
+                <div class="span4">
+                  <div class="cta-btn">
+                    <a href="/entrar" class="btn btn-color">Cancel·lar <i class="icon-caret-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<script>
+  function redirect(){
+    window.location = "/entrar";
+  }
+
+</script>
+{% endblock %}

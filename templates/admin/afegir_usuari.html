@@ -1,0 +1,134 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+ <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Afegir/Eliminar usuari </h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/admin/inici">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Afegir/Eliminar Usuari</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+                <div class="span8">
+                <div class="post-image">
+                    <div class="post-heading">
+                    <h3><a href="#info-personal" id="info-personal">Informació personal</a></h3>
+                    </div>
+                </div>
+                <ul class="contact-info">
+                    <form id="afegir-perfil" action="" method="POST" role="form" class="contactForm">
+                        <div class="row">
+                        <div class="span8 log-status  field form-group">
+                            <span class="form-hist"><i class="fas fa-user"></i>&nbsp;Nom i cognoms </span><br>
+                            <input type="text" id="name" name = "name" autocomplete="off">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span8 log-status  field form-group">
+                            <span class="form-hist"><i class="fas fa-envelope"></i></i>&nbsp;Email </span><br>
+                            <input type="email" id="new-email" name ="email" autocomplete="off">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span8 log-status  field form-group">
+                            <span class="form-hist"><i class="fas fa-key"></i></i>&nbsp;Contrasenya </span><br>
+                            <input type="password" id="new-password" name= "password">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span8 log-status  field form-group">
+                            <span class="form-hist"><i class="fas fa-key"></i></i>&nbsp;Repetir Contrasenya </span><br>
+                            <input type="password" id="new-password_repeat" name= "password_repeat">
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span8 log-status  field form-group">
+                            <span class="form-hist"><i class="fas fa-users-cog"></i>&nbsp;Rol</span><br>
+                            <input type="text" list="rol" name ="rol" autocomplete="off">
+                            <datalist id="rol">
+                            <option value="Administrador">Administrador</option>
+                            <option value="Usuari">Usuari</option>
+                            </datalist>
+                        </div>
+                        <div class="span8 log-status  field form-group">
+                          <span class="form-hist"><i class="fas fa-key"></i></i>&nbsp;Codi Tarjeta </span><br>
+                          <input type="text" id="codi_tarjeta" name= "codi" autocomplete="off">
+                          <div class="validation"></div>
+                      </div>
+                            <p>
+                            <button class="btn btn-color marginleft10" type="submit">Crear usuari</button>
+                            </p>
+                        </div>
+                         {% if msg == "Valid_form" %}
+                            <div class="alert success">
+                            <span class="closebtn">&times;</span>  
+                            <strong>Success!</strong> Usuari afegit.
+                            </div>
+                          
+                         {% elif error == "Invalid_code" %}
+                          <div class="alert">
+                          <span class="closebtn">&times;</span>  
+                          <strong>Error!</strong> Codi invalid. Ha de tenir 8 caràcters.
+                          </div>
+                         {% elif error == "Invalid_form" %}
+                            <div class="alert">
+                            <span class="closebtn">&times;</span>  
+                            <strong>Error!</strong> Formulari invalid.
+                            </div>
+                        {% endif %}
+                    </form>                  
+                </ul>
+                <article>
+                  <div class="row">
+                    <div class="span8">
+                      <div class="post-image">
+                        <div class="post-heading">
+                          <h3><a href="#reserva_title" id="reserva_title">Eliminar usuari</a></h3>
+                        </form>                         
+                        </div>
+                          <form id="eliminar_form" action="" method="POST" name="eliminar_from" role="form" class="contactForm">
+                            <div class="row">   
+                                <div class="span8 margintop10 field form-group">
+                                  <span class="form-hist"><i class="fas fa-user"></i> &nbsp;Email</span>
+                                  <input type="mail" id="mail" name ="mail" required="required" autocomplete="off">
+                                </div> 
+                                <button class="btn btn-color marginleft10 margintop10" type="submit" name="eliminar" value="eliminar">Eliminar</button>  
+                              </div>                            
+                    </form>   
+                    
+                    {% if msg == "eliminat" %}
+                    <div class="alert success">
+                    <span class="closebtn">&times;</span>
+                       <strong>Success!</strong> Usuari eliminat amb èxit.
+                    </div>
+                    {% endif %}
+                    {% if msg== "noEliminat" %}
+                    <div id="errormessage">Usuari no existeix</div>
+                    <div class="alert">
+                    <span class="closebtn">&times;</span>
+                      <strong>Error!</strong>Usuari no existent
+                    </div>
+                    {% endif %}                                   
+                    </div>
+                        </div>       
+              </article>
+            </div>              
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+{% endblock %}

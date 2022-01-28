@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TechLab UPC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your page description here" />
+  <meta name="author" content="Manuel Angel Roman Ramos" />
+  <link href="/static/css/bootstrap.css" rel="stylesheet" />
+  <link href="/static/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="/static/css/prettyPhoto.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link id="t-colors" href="/static/color/default.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <header>
+      <div class="top">
+        <div class="container">
+          <div class="row">
+            <div class="span6">
+              <ul class="topmenu">
+                <li><a href="index">Inici</a> &#47;</li>
+                <li><a href="contact">Contacte</a> &#47;</li>
+                <li><a href="#">Política de Privacitat</a></li>
+              </ul>
+            </div>
+            <div class="span6">
+              <ul class="social-network">
+                <li><a href="#" data-placement="bottom" title="Facebook"><i class="icon-circled icon-bglight icon-facebook"></i></a></li>
+                <li><a href="#" data-placement="bottom" title="Twitter"><i class="icon-circled icon-bglight icon-twitter"></i></a></li>
+                <li><a href="#" data-placement="bottom" title="Google +"><i class="icon-circled icon-google-plus icon-bglight"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row nomargin">
+          <div class="span4">
+            <div class="logo">
+              <h1><a href="index"><i class="icon-tint"></i> TechLab UPC</a></h1>
+            </div>
+          </div>
+          <div class="span8">
+            <div class="navbar navbar-static-top">
+              <div class="navigation">
+                <nav>
+                  <ul class="nav topnav">
+                    <li>
+                      <a href="index">Inici</a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#">Reserves <i class="icon-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Reserva</a></li>
+                        <li><a href="#">Cancel·lar</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="about">Qui som</a></li>
+                    <li  class="active"><a href="contact">Contacta </a></li>
+                    <li><a href="entrar">Entrar</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Introduïr reserva</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="index">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Introduïr reserva</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <aside class="left-sidebar">
+              <div class="widget">
+                <h5 class="widgetheading">Categoríes</h5>
+                <ul class="cat">
+                  <li><i class="icon-angle-right"></i> <a href="maquines">Control màquines</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="histUsers">Historial usuaris</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="histMaquines">Historial màquines</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="reservar">Introduïr reserva</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="cancelar">Cancel·lar reserva</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="admin#reserves_avui">Reserves d'avui</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="histUsers">Consum d'un usuari</a></li>
+                  <li><i class="icon-angle-right"></i> <a href="histUsers">Reserves d'un usuari</a></li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#reserva_title" id="reserva_title">Reserva d'una màquina</a></h3>
+                    </div>
+                  </div>
+                  <form id="histMaquinesform" action="" method="post" role="form" class="contactForm">
+                    <!--div id="sendmessage">Consulta realitzada</div-->
+                    <!--div id="errormessage">Consulta error</div-->
+                    <div class="row">
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="fas fa-user"></i> &nbsp;Nom d'usuari</span>
+                           <input type="text" class="form-control" placeholder="* Introdueix el nom d'usuari" id="UserName">
+                      </div>
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="fas fa-user"></i> &nbsp;Password</span>
+                           <input type="text" class="form-control" placeholder="* Introdueix la teva contrasenya" id="Pswd">
+                      </div>
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="far fa-calendar-alt"></i>&nbsp;Dia</span><br>
+                        <input type="date" id="data-reserva">
+                        <div class="validation"></div>
+                      </div>
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="fas fa-clock"></i>&nbsp;Hora inici</span><br>
+                        <input type="time" id="hora-inici">
+                        <div class="validation"></div>
+                      </div>
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="fas fa-clock"></i>&nbsp;Hora finalització</span><br>
+                        <input type="time" id="hora-final">
+                        <div class="validation"></div>
+                      </div>
+                      <div class="fform-group log-status span8 margintop10 field">
+                        <span class="form-hist"><i class="fas fa-desktop"></i>&nbsp;Màquina a reservar</span>
+                        <input type="checkbox" list="maquines" class="form-control">
+                        <datalist id="maquines">
+                          <option value="Maquina 1"></option>
+                          <option value="Maquina 2"></option>
+                          <option value="Maquina 3"></option>
+                          <option value="Maquina 4"></option>
+                          <option value="Maquina 5"></option>
+                          <option value="Maquina 6"></option>
+                          <option value="Maquina 7"></option>
+                          <option value="Maquina 8"></option>
+                          <option value="Maquina 9"></option>
+                          <option value="Maquina 10"></option>
+                        </datalist>
+                    </div>
+                        <p>
+                          <button class="btn btn-color marginleft10" type="submit">Reservar</button>
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="widget">
+              <div class="footer_logo">
+                <h3><a href="index"><i class="icon-tint"></i> TechLab</a></h3>
+              </div>
+              <address>
+                <strong>Universitat Politècnica de Catalunya.</strong><br>
+                Av. de les Bases de Manresa, 61-73. <br>
+                08242 Manresa
+              </address>
+              <p>
+                <i class="icon-phone"></i> (+34) 93 877 72 00  <br>
+                <i class="icon-envelope-alt"></i> techlabepsem@gmail.com
+              </p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <h5 class="widgetheading">Altre informació</h5>
+              <ul class="link-list">
+                <li><a href="about">El nostre grup</a></li>
+                <li><a href="avis_legal">Avís legal</a></li>
+                <li><a href="avis_legal">Política de Privacitat</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="widget">
+              <div class="flickr_badge">
+                <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sub-footer">
+        <div class="container">
+          <div class="row">
+            <div class="span6">
+              <div class="copyright">
+                <p><span>&copy; TechLab UPC. Tots els drets reservats.</span></p>
+              </div>
+            </div>
+            <div class="span6">
+              <div class="credits">
+                Creat per <a href="about"> el nostre grup</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <a href="#" class="scrollup"><i class="icon-angle-up icon-rounded icon-bglight icon-2x"></i></a>
+  <script src="/static/jsjquery.js"></script>
+  <script src="/static/jsjquery.easing.1.3.js"></script>
+  <script src="/static/jsbootstrap.js"></script>
+  <script src="/static/jsmodernizr.custom.js"></script>
+  <script src="/static/jstoucheffects.js"></script>
+  <script src="/static/jsgoogle-code-prettify/prettify.js"></script>
+  <script src="/static/jsjquery.prettyPhoto.js"></script>
+  <script src="/static/jsportfolio/jquery.quicksand.js"></script>
+  <script src="/static/jsportfolio/setting.js"></script>
+  <script src="/static/jsanimate.js"></script>
+  <script src="/static/jscustom.js"></script>
+</html>

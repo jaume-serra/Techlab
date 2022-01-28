@@ -1,0 +1,153 @@
+{% extends 'admin/base_admin.html' %}
+{% block content %}
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Historial d'usuaris </h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="/admin/inici">Inici</a> <i class="icon-angle-right"></i></li>
+              <li class="active">Historial d'usuaris</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container">
+        <div class="row">
+          {% block categories %}{{super()}}{% endblock %}
+
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h3><a href="#cercar-usuari" id="cercar-usuari">Cercar historial d'un usuari</a></h3>
+                    </div>
+                  </div>
+                  
+                  <form id="histUsersform" action="" method="POST" role="form" class="contactForm">
+                    <!--div id="sendmessage">Consulta realitzada</div-->
+                    <!--div id="errormessage">Consulta error</div-->
+                    <div class="row">
+                      <div class="span4 field form-group">
+                        <div class="form-group log-status span8 margintop10 field">
+                         <span class="form-hist"><i class="fas fa-user"></i> &nbsp;Usuari a cercar</span><br>
+                          <input type="text" list="maquines" placeholder="*Usuari a cercar o clica" name = "usuari" autocomplete="off">
+                          <datalist id="maquines">
+                            <option value="Tots">Tots</option>
+                          </datalist>
+                      </div>                  
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="far fa-calendar-alt"></i>&nbsp;Data inici </span>&nbsp;&nbsp;
+                        <br><input type="date" id="data-inici" name = "data_inici">
+                        <div class="validation"></div>
+                      </div>
+                      <div class="span8 margintop10 field form-group">
+                        <span class="form-hist"><i class="far fa-calendar-alt"></i>&nbsp;Data final </span>&nbsp;&nbsp;
+                        <br><input type="date" id="data-final" name = "data_final">
+                        <div class="validation"></div>
+                      </div>
+                        <p>
+                          <button class="btn btn-color margintop10 marginleft10" type="submit">Cercar</button>
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+
+            </article>
+            {% if search %}
+              <article>
+                <div class="row">
+                  <div class="span8">
+                    <div class="post-image">
+                      <div class="post-heading">
+                        <h3><a href="#reserves_ultimasetmana" id="reserves_ultimasetmana">Reserves</a></h3>
+                      </div>
+                    </div>
+                    {% if items == [] %}
+                    <p>
+                      <a>Cap resultat disponible</a>
+                    </p>
+                    {% else %}
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Dia</th>
+                            <th>Hora inici</th>
+                            <th>Hora final</th>
+                            <th>Usuari</th>
+                            <th>Màquina</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in items %}
+                          <tr>
+                            <td>{{item[0]}}</td>
+                            <td>{{item[1]}}</td>
+                            <td>{{item[2]}}</td>
+                            <td>{{item[3]}}</td>
+                            <td>{{item[4]}}</td>
+                          </tr>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </article>
+              {% endif %}
+            {% else %}
+              {% if items %}
+              <article>
+                <div class="row">
+                  <div class="span8">
+                    <div class="post-image">
+                      <div class="post-heading">
+                        <h3><a href="#reserves_ultimasetmana" id="reserves_ultimasetmana">Reserves de la última setmana</a></h3>
+                      </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Dia</th>
+                            <th>Hora inici</th>
+                            <th>Hora final</th>
+                            <th>Usuari</th>
+                            <th>Màquina</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in items %}
+                          <tr>
+                            <td>{{item[0]}}</td>
+                            <td>{{item[1]}}</td>
+                            <td>{{item[2]}}</td>
+                            <td>{{item[3]}}</td>
+                            <td>{{item[4]}}</td>
+
+                          </tr>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </article>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/static/js/grafic-circular.js"></script>
+    <script>
+      setInterval("consultaAforament()", 5000)
+    </script>
+{% endblock %}
